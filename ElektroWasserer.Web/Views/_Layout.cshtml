@@ -13,9 +13,9 @@
     <link href="content/css/output.css" rel="stylesheet">
 </head>
 <body>
-<h1 class="text-3xl font-bold underline">
-    Hello world!
-</h1>
+@{
+    await Html.RenderPartialAsync("/Views/Partials/_Header.cshtml");
+}
 <main class="main-content">
     @RenderBody()
 </main>

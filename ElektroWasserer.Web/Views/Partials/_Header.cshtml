@@ -1,0 +1,16 @@
+﻿@inherits ElektroWasserer.Web.EwUmbracoViewPage
+@{
+}
+<header class="relative">
+    @{
+        await Html.RenderPartialAsync("/Views/Partials/_Navbar.cshtml");
+    }
+    <div class="relative h-96">
+        <div class="-translate-x-1/2 -translate-y-1/2 z-10 absolute left-1/2 top-1/2 transform">
+            <img class="size-32 md:size-52" src="https://localhost:44349/media/Logo-ElektroWasserer.png" alt="Logo Elektro Wasserer">
+        </div>
+        <div class="absolute inset-0 bg-blue-400 opacity-50"></div>
+        <img class="h-full w-full object-cover" src="@Model.HeaderImage?.FirstOrDefault()?.Url()"/>
+    </div>
+
+</header>
