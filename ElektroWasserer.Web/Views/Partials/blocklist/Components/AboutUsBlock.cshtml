@@ -1,0 +1,54 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@{
+    var aboutUsBlock = (AboutUsBlock)Model.Content;
+}
+
+<section class="relative mb-32 py-24 sm:mb-0">
+    <div class="mx-auto w-full max-w-7xl px-4 md:px-5 md:px-5">
+        <div class="grid-cols-1 grid w-full items-center justify-start gap-12 md:grid-cols-2">
+            <div class="grid-cols-1 relative order-last grid w-full items-start justify-center gap-6 sm:grid-cols-2 md:order-first">
+                <!-- Person 1 -->
+                <div class="group relative mt-4 flex w-2/3 items-start justify-start gap-2.5 sm:w-full sm:justify-end sm:mt-24 md:justify-center">
+                    <img class="overflow-hidden rounded-xl object-cover transition-transform duration-300 ease-in-out md:w-full"
+                         src="@aboutUsBlock.Person1?.Url()" 
+                        alt="Person 1"/>
+                    <div class="bg-black/60 opacity-0 group-hover:opacity-100 absolute inset-0 flex items-center justify-center overflow-hidden rounded-xl text-xl font-bold text-white transition-opacity duration-300 ease-in-out">
+                        Othmar
+                    </div>
+                </div>
+
+                <!-- Person 2 -->
+                <div class="group absolute right-0 top-60 ml-auto w-2/3 sm:top-0 sm:relative sm:w-full">
+                    <img class="ml-auto w-full rounded-xl object-cover transition-transform duration-300 ease-in-out sm:top-0 sm:ml-0 sm:relative md:w-full" 
+                        src="@aboutUsBlock.Person2?.Url()" 
+                        alt="Person 2"/>
+                    <div class="bg-black/60 opacity-0 group-hover:opacity-100 absolute inset-0 flex items-center justify-center rounded-xl text-xl font-bold text-white transition-opacity duration-300 ease-in-out">
+                        Alexander
+                    </div>
+                </div>
+            </div>
+
+            <div class="inline-flex w-full flex-col items-center justify-center gap-10 md:items-start">
+                <div class="flex w-full flex-col items-start justify-center gap-8">
+                    <div class="flex w-full flex-col items-center justify-start gap-3 md:items-start">
+                        <p>@Html.Raw(aboutUsBlock.Text)</p>
+                    </div>
+                    <div class="inline-flex w-full items-center justify-center gap-5 sm:gap-10 md:justify-start">
+                        <div class="inline-flex flex-col items-start justify-start">
+                            <h3 class="font-manrope text-4xl font-bold leading-normal text-gray-900">20+</h3>
+                            <h6 class="text-base font-normal leading-relaxed text-gray-500">Jahre Erfahrung</h6>
+                        </div>
+                        <div class="inline-flex flex-col items-start justify-start">
+                            <h4 class="font-manrope text-4xl font-bold leading-normal text-gray-900">125+</h4>
+                            <h6 class="text-base font-normal leading-relaxed text-gray-500">Successful Projects</h6>
+                        </div>
+                        <div class="inline-flex flex-col items-start justify-start">
+                            <h4 class="font-manrope text-4xl font-bold leading-normal text-gray-900">52+</h4>
+                            <h6 class="text-base font-normal leading-relaxed text-gray-500">Happy Clients</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
