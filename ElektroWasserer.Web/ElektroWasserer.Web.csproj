@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\content\css\" />
+    <Folder Include="wwwroot\content\lazysizes\" />
   </ItemGroup>
 
   <PropertyGroup>
