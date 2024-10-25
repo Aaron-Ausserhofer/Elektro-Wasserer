@@ -1,0 +1,20 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@{
+    var servicesSubBlock = (ServicesSubBlock)Model.Content;
+}
+<div>
+    <div class="relative aspect-video w-full cursor-pointer overflow-hidden rounded-lg bg-zinc-700">
+        <img data-src="@servicesSubBlock.Image?.Url()" alt="@servicesSubBlock.Image?.Name" class="lazyload h-full w-full rounded object-cover">
+    </div>
+    <div class="mt-6">
+        <div class="relative w-full overflow-hidden">
+            <div class="mb-2 flex w-full items-center gap-2">
+                <h3 class="text-2xl font-bold">@servicesSubBlock.Title</h3>
+                <div class="h-[1px] w-full bg-zinc-600"></div>
+            </div>
+        </div>
+        <div class="relative w-fit overflow-hidden">
+            <p class="leading-relaxed text-zinc-300">@servicesSubBlock.Text</p>
+        </div>
+    </div>
+</div>

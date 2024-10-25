@@ -9,35 +9,14 @@
         <h2>
             <div class="relative w-fit overflow-hidden">
                 <div style="opacity: 1; transform: none;">
-                    <span class="font-black text-end text-3xl md:text-5xl">Leistungen<span class="text-primary-400">.</span></span>
+                    <span class="font-black text-end text-3xl md:text-5xl">
+                        @servicesBlock.Title<span class="text-primary-400">.</span>
+                    </span>
                 </div>
-                <div class="z-20 absolute bottom-1 left-0 right-0 top-1 bg-indigo-500" style="left: 100%;"></div>
             </div>
         </h2>
     </div>
     <div class="grid-cols-1 grid gap-12 md:grid-cols-2">
-        <div style="opacity: 1; transform: none;">
-            <div class="relative aspect-video w-full cursor-pointer overflow-hidden rounded-lg bg-zinc-700">
-                <img src="@servicesBlock.Image?.Url()" alt="An image of the Paint.app project." class="absolute inset-0 rounded transition-all">
-            </div>
-            <div class="mt-6">
-                <div class="relative w-full overflow-hidden">
-                    <div style="opacity: 1; transform: none;">
-                        <div class="flex w-full items-center gap-2">
-                            <h4 class="shrink-0 max-w-[calc(100%_-_150px)] text-lg font-bold">@servicesBlock.Title</h4>
-                            <div class="h-[1px] w-full bg-zinc-600"></div>
-                        </div>
-                    </div>
-                    <div class="z-20 absolute bottom-1 left-0 right-0 top-1 bg-indigo-500" style="left: 100%;"></div>
-                </div>
-                <div class="relative w-fit overflow-hidden">
-                    <div style="opacity: 1; transform: none;">
-                        <p class="leading-relaxed text-zinc-300">@servicesBlock.Text</p>
-                    </div>
-                    <div class="z-20 absolute bottom-1 left-0 right-0 top-1 bg-indigo-500" style="left: 100%;"></div>
-                </div>
-            </div>
-        </div>
+        @(await Html.GetBlockListHtmlAsync(servicesBlock.ServiceItem))
     </div>
 </section>
-
