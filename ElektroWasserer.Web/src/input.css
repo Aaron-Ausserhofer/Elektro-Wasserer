@@ -1,18 +1,26 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer base {
     h1 {
-        @apply text-primary-400;
+        @apply text-yellow-400;
     }
     h2 {
-        @apply text-white;
+        @apply text-black;
     }
     .container {
         @apply m-auto px-4;
     }
-
+    section {
+        @apply !my-20;
+    }
+}
+body {
+    font-family: "Outfit", sans-serif
+}
 
 .main-content .lazyload,
 .lazyloading {
@@ -24,3 +32,8 @@
     opacity: 1;
     transition: opacity ease 1500ms;
 }
+/*
+header {
+    clip-path: polygon(0 0, 5760px 0, 5760px calc(100% - 352px), 0 100%);
+}*/
+
