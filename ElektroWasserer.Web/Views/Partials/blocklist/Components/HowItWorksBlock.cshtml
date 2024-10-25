@@ -1,0 +1,49 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@{
+    var servicesBlock = (HowItWorksBlock)Model.Content;
+}
+
+<section id="works" class="relative bg-gray-800 py-10 sm:py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+            <h2 class="mx-auto text-4xl font-extrabold text-white md:text-6xl lg:text-5xl">Wie gehen Sie vor?</h2>
+        </div>
+        <div class="relative mt-12 lg:mt-20">
+            <div class="absolute inset-x-0 top-2 hidden md:block md:px-20 lg:px-28 xl:px-44">
+                <img alt="" loading="lazy" width="1000" height="500" decoding="async" data-nimg="1" class="w-full" style="color:transparent" src="https://cdn.rareblocks.xyz/collection/celebration/images/steps/2/curved-dotted-line.svg">
+            </div>
+            <div class="grid-cols-1 relative grid gap-x-12 gap-y-12 text-center text-white md:grid-cols-3">
+                @* Step 1 *@
+                <div>
+                    <div class="border-2 mx-auto flex h-16 w-16 items-center justify-center rounded-full border-gray-200 bg-white shadow">
+                        <span class="text-xl font-semibold text-gray-700">1</span>
+                    </div>
+                    <p class="mt-4 text-base text-gray-400 md:text-lg">
+                        @servicesBlock.Step1
+                    </p>
+                </div>
+                @* Step 2 *@
+                <div>
+                    <div class="border-2 mx-auto flex h-16 w-16 items-center justify-center rounded-full border-gray-200 bg-white shadow">
+                        <span class="text-xl font-semibold text-gray-700">2</span>
+                    </div>
+                    <p class="text-whtie mt-4 text-base md:text-lg">
+                        @servicesBlock.Step2
+                    </p>
+                </div>
+                @* Step 3 *@
+                <div>
+                    <div class="border-2 mx-auto flex h-16 w-16 items-center justify-center rounded-full border-gray-200 bg-white shadow">
+                        <span class="text-xl font-semibold text-gray-700">3</span>
+                    </div>
+                    <p class="mt-4 text-base text-gray-400 md:text-lg">
+                        @servicesBlock.Step3
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="absolute inset-0 m-auto h-[357px] max-w-xs blur-[118px] sm:max-w-md md:max-w-lg"
+         style="background:radial-gradient(1.89deg, rgba(34, 78, 95, 0.4) -1000%, rgba(191, 227, 205, 0.26) 1500.74%, rgba(34, 140, 165, 0.41) 56.49%, rgba(28, 47, 99, 0.11) 1150.91%)">
+    </div>
+</section>
