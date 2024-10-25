@@ -1,0 +1,9 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@{
+    var mainServicesBlock = (MainServicesBlock)Model.Content;
+}
+<div class="container bg-gray-800 py-8" id="mainServices">
+    <div class="grid-cols-1 grid gap-12 md:grid-cols-2">
+        @(await Html.GetBlockListHtmlAsync(mainServicesBlock.Service))
+    </div>
+</div>

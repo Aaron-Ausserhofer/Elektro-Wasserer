@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@{
+    var mainServicesSubBlock = (MainServicesSubBlock)Model.Content;
+}
+<div>
+    <div class="relative flex w-full justify-center">
+        <img data-src="@mainServicesSubBlock.Icon?.Url()" alt="@mainServicesSubBlock.Icon?.Name" class="lazyload size-16">
+    </div>
+    <div class="mt-6 text-center">
+        <div class="relative w-full overflow-hidden">
+            <div class="mb-2 gap-2">
+                <h3 class="text-xl font-semibold text-white">@mainServicesSubBlock.Title</h3>
+            </div>
+        </div>
+        <div class="text-white">
+            @mainServicesSubBlock.Text
+        </div>
+    </div>
+</div>
