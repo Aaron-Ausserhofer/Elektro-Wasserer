@@ -6,6 +6,10 @@
     "iisExpress": {
       "applicationUrl": "http://localhost:18454",
       "sslPort": 44349
+    },
+    "iis": {
+      "applicationUrl": "http://dev.elektrowasserer.com/",
+      "sslPort": 443
     }
   },
   "profiles": {
@@ -23,7 +27,16 @@
       "applicationUrl": "https://localhost:44349;http://localhost:18454",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }      
+      }
+    },
+    "Local IIS": {
+      "commandName": "IIS",
+      "commandLineArgs": "Local IIS",
+      "launchBrowser": false,
+      "launchUrl": "http://dev.elektrowasserer.com/",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     }
   }
 }
