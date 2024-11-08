@@ -1,6 +1,16 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+﻿@using Umbraco.Cms.Core.Web
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@inject IUmbracoContextAccessor UmbracoContextAccessor
 @{
     var servicesBlock = (ServicesBlock)Model.Content;
+    Homepage? homePage;
+    ServicesPage? servicesPage = null;
+    if (UmbracoContextAccessor.TryGetUmbracoContext(out IUmbracoContext? context))
+    {
+        var content = context.PublishedRequest?.PublishedContent;
+        homePage = content?.AncestorOrSelf<Homepage>();
+        servicesPage = homePage?.Descendant<ServicesPage>();
+    }
 }
 
 <section class="section-wrapper container" id="projects">
@@ -8,15 +18,37 @@
         <div class="h-[1px] w-full bg-zinc-700"></div>
         <h2>
             <div class="relative w-fit overflow-hidden">
-                <div style="opacity: 1; transform: none;">
+                <div class="pb-4">
                     <span class="font-black text-end text-3xl md:text-5xl">
-                        @servicesBlock.Title<span class="text-primary-400">.</span>
+                        @servicesBlock.Title<span class="text-yellow-400">.</span>
                     </span>
                 </div>
             </div>
         </h2>
     </div>
-    <div class="grid-cols-1 grid gap-12 md:grid-cols-2">
-        @(await Html.GetBlockListHtmlAsync(servicesBlock.ServiceItem))
+    <div class="grid-cols-1 grid gap-12 md:grid-cols-3">
+        @foreach (var service in servicesPage?.Descendants<ServicePage>()!)
+        {
+            <a href="@service.Url()" class="bg-darkgray-950 relative mx-auto w-full max-w-md overflow-hidden border border-[#ffffff1a] text-white shadow-lg">
+                <!-- Header Section -->
+                <div class="z-20 absolute left-5 top-0 size-20 bg-yellow-400">
+                    <img class="m-auto h-full w-14" src="@service.ServiceIcon?.Url()" />
+                </div>
+                <div class="flex h-14 items-center">
+                    <div class="bg-darkgray-950 ml-auto rounded text-sm uppercase text-gray-300">
+                        @if (service.MainService)
+                        {
+                            <span class="pr-4 text-yellow-400">Hauptleistung</span>
+                        }
+                    </div>
+                </div>
+
+                <img class="h-52 w-full transform overflow-hidden border-y border-[#ffffff1a] object-cover object-center transition duration-500 hover:scale-105" src="@service.HeaderImage?.Url()" />
+
+                <div class="p-4">
+                    <h2 class="border-l-4 border-yellow-400 pl-2 text-lg font-bold uppercase text-white">@service.Name</h2>
+                </div>
+            </a>
+        }
     </div>
 </section>
