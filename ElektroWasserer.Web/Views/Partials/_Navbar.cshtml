@@ -1,15 +1,16 @@
 ﻿@inherits ElektroWasserer.Web.EwUmbracoViewPage
 
 @{
-    var homePage = Model.TryConvertTo<Homepage>().Result;
+    var homePage = Model.AncestorOrSelf<Homepage>();
+    var servicesPage = homePage?.Descendant<ServicesPage>();
 }
 
 <div class="min-h-full">
-    <nav class="z-20 nav fixed w-full transition-all duration-500">
+    <nav class="nav fixed top-0 z-50 w-full transition-all duration-500">
         <div class="h-20 bg-white px-4">
             <div class="-mr-2 flex items-center justify-between">
                 <a href="/" class="">
-                    <img class="h-16" src="https://localhost:44349/media/Elektro-Wasserer-Logo_Big.png" alt="Logo Elektro Wasserer">
+                    <img class="h-16" src="@(homePage?.Url(mode: UrlMode.Absolute))media/Elektro-Wasserer-Logo_Big.png" alt="Elektro-Wasserer-Logo_Big">
                 </a>
                 <div class="flex">
                     <input type="checkbox" id="hamburger" class="peer sr-only relative">
@@ -23,7 +24,7 @@
                     <div class="fixed bottom-0 right-0 top-0 z-50 h-full w-64 w-52 max-w-full translate-x-full transform bg-gray-100 shadow-lg transition-all duration-500 peer-checked:translate-x-0">
                         <div class="h-full p-6">
                             <div class="mb-8 flex items-center justify-between">
-                                <img class="h-12" src="https://localhost:44349/media/Elektro-Wasserer-Logo_Big.png" alt="Logo Elektro Wasserer">
+                                <img class="h-12" src="@(homePage?.Url(mode: UrlMode.Absolute))media/Elektro-Wasserer-Logo_Big.png" alt="Elektro-Wasserer-Logo_Big">
                                 <input type="checkbox" id="hamburger" class="peer sr-only relative">
                                 <label for="hamburger" class="relative left-0 top-0 z-30 inline-block cursor-pointer rounded-lg transition-all duration-500">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -33,16 +34,33 @@
                             </div>
                             <div class="mt-6 flex h-full flex-col justify-between">
                                 <ul class="space-y-2">
-                                    @foreach (var item in homePage?.SidebarMenuItems!)
-                                    {
-                                        <li class="border-b border-gray-400">
-                                            <a href="@item.Url" class="flex w-full items-center justify-between p-2">
-                                                @item.Name
-                                            </a>
-                                        </li>
-                                    }
-                                </ul>
+                                    <li class="border-b border-gray-400">
+                                        <a href="/" class="flex w-full items-center justify-between p-2">
+                                            Home
+                                        </a>
+                                    </li>
+                                    <li class="relative border-b border-gray-400">
+                                        <input type="checkbox" id="dropdownToggle" class="peer sr-only">
+                                        <label for="dropdownToggle" class="inline-block w-full cursor-pointer p-2">
+                                            Leistungen
+                                            <svg for="dropdownToggle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-transform duration-300 ease-in-out peer-checked:rotate-180">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                            </svg>
+                                        </label>
+                                        <ul class="opacity-0 absolute left-0 mt-1 max-h-0 w-48 transform overflow-hidden rounded transition-all duration-300 ease-in-out peer-checked:opacity-100 peer-checked:max-h-96 peer-checked:overflow-visible">
+                                            @foreach (var service in servicesPage?.Descendants<ServicePage>()!)
+                                            {
+                                                <li class="ml-0.5">
+                                                    <a href="@service.Url()" class="block px-4 py-2 hover:bg-gray-100">
+                                                        - @service.Name
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </li>
 
+
+                                </ul>
                                 <div class="mt-6 space-y-2 pb-[100px]">
                                     <div class="mb-4 flex max-w-72 items-start justify-start">
                                         <div class="flex">
@@ -51,7 +69,7 @@
                                             </svg>
                                             <div class="flex flex-col">
                                                 <span class="text-xs font-semibold">Email</span>
-                                                <a class="text-sm sm:text-base" href="mailto:">info@elektrowasser.com</a>
+                                                <a class="text-sm sm:text-base" href="mailto:info@elektrowasser.com">info@elektrowasser.com</a>
                                             </div>
                                         </div>
                                     </div>
@@ -62,7 +80,7 @@
                                             </svg>
                                             <div class="flex flex-col">
                                                 <span class="text-xs font-semibold">Telefon</span>
-                                                <a class="text-sm sm:text-base" href="tel:">+39 348 352 8931</a>
+                                                <a class="text-sm sm:text-base" href="tel:+393483528931">+39 348 352 8931</a>
                                             </div>
                                         </div>
                                     </div>
@@ -90,3 +108,9 @@
             document.querySelector("body").classList.toggle('overflow-hidden');
         });
 </script>
+
+<style>
+    :peer-checked: .test svg {
+        background:red;
+    }
+</style>

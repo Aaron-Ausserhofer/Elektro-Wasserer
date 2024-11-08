@@ -1,26 +1,43 @@
 ﻿@inherits ElektroWasserer.Web.EwUmbracoViewPage
 @{
-    var headerImage = Model.HeaderImage.FirstOrDefault().Url();
+    var headerImage = Model.HeaderImage?.Url(mode: UrlMode.Absolute);
+    var homePage = Model.AncestorOrSelf<Homepage>();
 }
 <header>
     @{
         await Html.RenderPartialAsync("/Views/Partials/_Navbar.cshtml");
     }
-    <div class="flex-1 flex h-[700px] flex-col items-start justify-center bg-cover bg-no-repeat px-6" style="background-image:url('@headerImage')">
-        <div class="container">
-            <figure class="animate-bounce-slow flex justify-end">
-                <img class="size-24" src="https://localhost:44349/media/blitz.png">
-            </figure>
-            <div class="after:w-20 after:block after:my-4 after:border-b-4 after:border-yellow-400">
-                <h2 class="mb-6 flex w-full flex-col text-left text-6xl font-bold lg:text-6xl">
-                    <span class="text-white">Elektro</span>
-                    <span class="text-yellow-400">Wasserer</span>
-                </h2>
+    @if (!Model.NoHeader)
+    {
+        <div class="flex-1 relative flex h-[700px] flex-col items-start justify-center bg-cover bg-center bg-no-repeat px-6" style="background-image:url('@headerImage')">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="z-10 container">
+                <figure class="animate-bounce-slow flex justify-end">
+                    <img class="size-24" src="@homePage?.Url(mode: UrlMode.Absolute)/media/blitz.png">
+                </figure>
+                <div class="after:w-20 after:block after:my-4 after:border-b-4 after:border-yellow-400">
+                    <h2 class="mb-6 flex w-full flex-col text-left text-6xl font-bold lg:text-6xl">
+                        @if (Model is Homepage)
+                        {
+                            <span class="text-white">Elektro</span>
+                            <span class="text-yellow-400">Wasserer</span>
+                        }
+                        else
+                        {
+                            <span class="break-words text-white">@Model.Name</span>
+                        }
+                    </h2>
+                </div>
+                <div class="mb-8 max-w-96 text-white">
+                    @Html.Raw(Model.HeaderText)
+                </div>
+                @if (Model is Homepage)
+                {
+                    <a href="mailto:info@elektrowasser.com" class="mt-8 bg-yellow-400 px-12 py-3 font-semibold text-black">
+                        KONTAKT
+                    </a>
+                }
             </div>
-            <div class="max-w-96 text-white">Capitalise on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs. </div>
-            <button class="mt-8 bg-yellow-400 px-12 py-3 font-semibold text-black">
-                KONTAKT
-            </button>
         </div>
-    </div>
+    }
 </header>
