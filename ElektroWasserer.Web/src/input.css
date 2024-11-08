@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 
 @tailwind base;
@@ -6,10 +6,10 @@
 @tailwind utilities;
 @layer base {
     h1 {
-        @apply text-yellow-400;
+        @apply text-4xl text-yellow-400;
     }
     h2 {
-        @apply text-black;
+        @apply mb-2 text-3xl text-black;
     }
     .container {
         @apply m-auto px-4;
