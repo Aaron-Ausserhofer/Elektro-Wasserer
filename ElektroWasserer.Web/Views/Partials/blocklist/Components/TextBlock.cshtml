@@ -1,0 +1,13 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@{
+    var textBlock = (TextBlock)Model.Content;
+}
+
+<div class="container">
+    <section class="py-12">
+        <h2>@textBlock.Title</h2>
+        <div class="text-black">
+            @Html.Raw(textBlock.Text)
+        </div>
+    </section>
+</div>
