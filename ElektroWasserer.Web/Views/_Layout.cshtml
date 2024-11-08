@@ -1,4 +1,4 @@
-@using Smidge.TagHelpers
+﻿@using Smidge.TagHelpers
 @inherits ElektroWasserer.Web.EwUmbracoViewPage
 
 <!doctype html>
@@ -10,10 +10,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elektro Wasserer</title>
-    <link href="content/css/output.css" rel="stylesheet">
+    <link href="/content/css/output.css" rel="stylesheet">
 </head>
-<body>
-<script src="content/lazysizes/lazysizes.min.js" async=""></script>
+<body class="bg-[#18181b] bg-gray-100 text-black">
+<script src="/content/lazysizes/lazysizes.min.js" async=""></script>
 
 @{
     await Html.RenderPartialAsync("/Views/Partials/_Header.cshtml");
