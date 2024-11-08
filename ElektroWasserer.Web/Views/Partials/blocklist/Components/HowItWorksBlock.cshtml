@@ -3,47 +3,64 @@
     var servicesBlock = (HowItWorksBlock)Model.Content;
 }
 
-<section id="works" class="relative bg-gray-800 py-10 sm:py-16 lg:py-24">
+<section id="works" class="bg-darkgray-950 relative py-10 sm:py-16 lg:py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
-            <h2 class="mx-auto text-4xl font-extrabold text-white md:text-6xl lg:text-5xl">Wie gehen Sie vor?</h2>
+            <h2 class="mx-auto text-4xl font-extrabold text-white md:text-6xl lg:text-5xl">Wie gehen Wir vor?</h2>
+            <p class="mt-6 text-center text-white">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         </div>
-        <div class="relative mt-12 lg:mt-20">
-            <div class="absolute inset-x-0 top-2 hidden md:block md:px-20 lg:px-28 xl:px-44">
-                <img alt="" loading="lazy" width="1000" height="500" decoding="async" data-nimg="1" class="w-full" style="color:transparent" src="https://cdn.rareblocks.xyz/collection/celebration/images/steps/2/curved-dotted-line.svg">
-            </div>
-            <div class="grid-cols-1 relative grid gap-x-12 gap-y-12 text-center text-white md:grid-cols-3">
-                @* Step 1 *@
-                <div>
-                    <div class="border-2 mx-auto flex h-16 w-16 items-center justify-center rounded-full border-gray-200 bg-white shadow">
-                        <span class="text-xl font-semibold text-gray-700">1</span>
-                    </div>
-                    <p class="mt-4 text-base text-gray-400 md:text-lg">
-                        @servicesBlock.Step1
-                    </p>
+        <div class="mt-12 grid md:grid-cols-[25%_75%]">
+            <div id="howItWsteps">
+                <div id="howItWstep-1" class="howItWstep active border-l-4 cursor-pointer border-[#f9fafb3d] py-4 pl-4">
+                    <p class="text-2xl font-semibold">01</p>
+                    <h2 class="text-xl font-semibold text-white">Persönliche Beratung</h2>
                 </div>
-                @* Step 2 *@
-                <div>
-                    <div class="border-2 mx-auto flex h-16 w-16 items-center justify-center rounded-full border-gray-200 bg-white shadow">
-                        <span class="text-xl font-semibold text-gray-700">2</span>
-                    </div>
-                    <p class="text-whtie mt-4 text-base md:text-lg">
-                        @servicesBlock.Step2
-                    </p>
+
+                <div id="howItWstep-2" class="howItWstep border-l-4 cursor-pointer border-[#f9fafb3d] py-4 pl-4">
+                    <p class="text-2xl font-semibold">02</p>
+                    <h2 class="text-xl font-semibold text-white">Planung und Kosten</h2>
                 </div>
-                @* Step 3 *@
-                <div>
-                    <div class="border-2 mx-auto flex h-16 w-16 items-center justify-center rounded-full border-gray-200 bg-white shadow">
-                        <span class="text-xl font-semibold text-gray-700">3</span>
-                    </div>
-                    <p class="mt-4 text-base text-gray-400 md:text-lg">
-                        @servicesBlock.Step3
-                    </p>
+
+                <div id="howItWstep-3" class="howItWstep border-l-4 cursor-pointer border-[#f9fafb3d] py-4 pl-4">
+                    <p class="text-2xl font-semibold">03</p>
+                    <h2 class="text-xl font-semibold text-white">Start des Projektes</h2>
+                </div>
+                <div id="howItWstep-4" class="howItWstep border-l-4 cursor-pointer border-[#f9fafb3d] py-4 pl-4">
+                    <p class="text-2xl font-semibold">04</p>
+                    <h2 class="text-xl font-semibold text-white">Kontrolle</h2>
                 </div>
             </div>
+            <div class="my-auto mt-8 md:pl-20 md:mt-0">
+                @(await Html.GetBlockListHtmlAsync(servicesBlock.Steps))
+            </div>
         </div>
-    </div>
-    <div class="absolute inset-0 m-auto h-[357px] max-w-xs blur-[118px] sm:max-w-md md:max-w-lg"
-         style="background:radial-gradient(1.89deg, rgba(34, 78, 95, 0.4) -1000%, rgba(191, 227, 205, 0.26) 1500.74%, rgba(34, 140, 165, 0.41) 56.49%, rgba(28, 47, 99, 0.11) 1150.91%)">
     </div>
 </section>
+
+<script>
+    const howItWsteps = document.querySelectorAll(".howItWstep");
+    const contents = document.querySelectorAll(".content");
+
+    contents[0].classList.add('active');
+
+    function updateActiveStep(clickedStep) {
+        howItWsteps.forEach(step => step.classList.remove('active'));
+
+        clickedStep.classList.add('active');
+
+        const stepIndex = Array.from(howItWsteps).indexOf(clickedStep);
+
+        contents.forEach(content => content.classList.remove('first:active'));
+        contents.forEach(content => content.classList.remove('active'));
+
+        if (contents[stepIndex]) {
+            contents[stepIndex].classList.add('active');
+        }
+    }
+
+    howItWsteps.forEach(step => {
+        step.addEventListener('click', () => {
+            updateActiveStep(step);
+        });
+    });
+</script>

@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 
 @tailwind base;
@@ -16,6 +16,22 @@
     }
     section {
         @apply !my-20;
+    }
+
+    .howItWstep.active {
+        @apply border-yellow-400 text-yellow-400 opacity-100; /* Tailwind classes */
+    }
+
+    .howItWstep {
+        @apply border-transparent text-gray-500 opacity-50; /* Tailwind classes */
+    }
+
+    .content.active {
+        @apply block;
+    }
+
+    .content {
+        @apply hidden;
     }
 }
 body {

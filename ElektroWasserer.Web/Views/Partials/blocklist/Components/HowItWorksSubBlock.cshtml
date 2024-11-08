@@ -1,0 +1,11 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@{
+    var hwItWBlock = (HowItWorksSubBlock)Model.Content;
+}
+
+<div class="content animate-fade first:active">
+    <div class="grid gap-4 md:grid-cols-2">
+        <img src="@hwItWBlock.Image?.Url()" alt="Consultation" class="lazyload aspect-video h-full rounded object-cover">
+        <div class="text-white">@hwItWBlock.Text</div>
+    </div>
+</div>
