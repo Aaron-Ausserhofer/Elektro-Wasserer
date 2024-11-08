@@ -1,4 +1,16 @@
+using ElektroWasserer.Web;
+using MediatR;
+using System.Reflection;
+using Umbraco.Cms.Core.Services;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+{
+    builder.Services.AddMediatR(cfg => {
+        cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
+    });
+    builder.Services.AddScoped<PageState>(p => p.GetRequiredService<IMediator>().Send(new PageStateHandler.Request()).GetAwaiter().GetResult());
+}
 
 builder.CreateUmbracoBuilder()
     .AddBackOffice()

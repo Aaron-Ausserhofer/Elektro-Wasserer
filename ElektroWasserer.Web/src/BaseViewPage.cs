@@ -13,5 +13,8 @@ namespace ElektroWasserer.Web
 
         [RazorInject]
         public IHttpContextAccessor HttpContextAccessor { get; set; } = null!;
+
+        [RazorInject]
+        public PageState PageState { get; set; } = null!;
     }
 }

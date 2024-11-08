@@ -4,16 +4,24 @@
 <!doctype html>
 @{
     Layout = null;
-}   
-<html>
+}
+<html lang="@PageState.Language?.IsoCode">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elektro Wasserer</title>
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg"/>
+    <link rel="shortcut icon" href="/favicon/favicon.ico"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png"/>
+    <link rel="manifest" href="/favicon/site.webmanifest"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css">
+
     <link href="/content/css/output.css" rel="stylesheet">
 </head>
 <body class="bg-[#18181b] bg-gray-100 text-black">
 <script src="/content/lazysizes/lazysizes.min.js" async=""></script>
+<script type="module" src="/content/js/cookieconsent-config.js"></script>
 
 @{
     await Html.RenderPartialAsync("/Views/Partials/_Header.cshtml");
@@ -22,6 +30,30 @@
     @RenderBody()
 </main>
 @{ await Html.RenderPartialAsync("/Views/Partials/_Footer.cshtml"); }
-
+@{
+    var privacyLink = "";
+    var imprintLink = "";
+    switch (PageState.Language?.IsoCode)
+    {
+        case "de":
+            privacyLink = "/datenschutz";
+            imprintLink = "/impressum";
+            break;
+        case "it":
+            privacyLink = "/privacy";
+            imprintLink = "/imprint";
+            break;
+        case "en":
+            privacyLink = "/privacy";
+            imprintLink = "/imprint";
+            break;
+    }
+}
+<script>
+    window.eWContext = {};
+    window.eWContext.language = '@PageState.Language';
+    window.eWContext.privacyLink = '@(privacyLink)';
+    window.eWContext.imprintLink = '@(imprintLink )';
+</script>
 </body>
 </html>
