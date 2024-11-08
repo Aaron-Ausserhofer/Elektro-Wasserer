@@ -2,8 +2,8 @@
 @{
     var mainServicesBlock = (MainServicesBlock)Model.Content;
 }
-<div class="container bg-gray-800 py-8" id="mainServices">
-    <div class="grid-cols-1 grid gap-12 md:grid-cols-2">
+<div class="bg-darkgray-950 py-8" id="mainServices">
+    <div class="grid-cols-1 container grid gap-12 md:grid-cols-3">
         @(await Html.GetBlockListHtmlAsync(mainServicesBlock.Service))
     </div>
 </div>
