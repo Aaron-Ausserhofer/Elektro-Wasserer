@@ -4,26 +4,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
+    body {
+        @apply pt-16 md:pt-20;
+    }
     h1 {
-        @apply text-4xl text-yellow-400;
+        @apply mb-2 text-2xl text-yellow-400 md:text-4xl;
     }
     h2 {
-        @apply mb-2 text-3xl text-black;
+        @apply mb-2 mb-2 text-3xl text-black;
     }
     .container {
         @apply m-auto px-4;
     }
     section {
-        @apply !my-20;
+        @apply py-10 md:py-20;
+    }
+
+    .btn-primary {
+        @apply bg-yellow-400 px-12 py-3 font-semibold text-black hover:bg-yellow-500;
     }
 
     .howItWstep.active {
-        @apply border-yellow-400 text-yellow-400 opacity-100; /* Tailwind classes */
+        @apply border-yellow-400 text-yellow-400 opacity-100;
     }
 
     .howItWstep {
-        @apply border-transparent text-gray-500 opacity-50; /* Tailwind classes */
+        @apply border-transparent text-gray-500 opacity-50;
     }
 
     .content.active {
@@ -35,7 +43,7 @@
     }
 }
 body {
-    font-family: "Outfit", sans-serif
+    font-family: "Outfit", sans-serif;
 }
 
 .main-content .lazyload,
@@ -48,8 +56,4 @@ body {
     opacity: 1;
     transition: opacity ease 1500ms;
 }
-/*
-header {
-    clip-path: polygon(0 0, 5760px 0, 5760px calc(100% - 352px), 0 100%);
-}*/
 
