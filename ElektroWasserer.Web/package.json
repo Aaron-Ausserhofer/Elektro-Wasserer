@@ -6,6 +6,7 @@
     "swiper": "^11.1.14",
   },
   "dependencies": {
+    "@fancyapps/ui": "^5.0.36",
     "vanilla-cookieconsent": "^3.0.1"
   }
 }

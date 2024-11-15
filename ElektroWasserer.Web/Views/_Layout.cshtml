@@ -1,4 +1,4 @@
-@using Smidge.TagHelpers
+﻿@using Smidge.TagHelpers
 @inherits ElektroWasserer.Web.EwUmbracoViewPage
 
 <!doctype html>
@@ -18,11 +18,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link href="/content/css/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="/content/css/fancybox.css"/>
 </head>
 <body class="bg-[#18181b] bg-gray-100 text-black">
 <script src="/content/lazysizes/lazysizes.min.js" async=""></script>
 <script type="module" src="/content/js/cookieconsent-config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/content/js/fancybox.umd.js"></script>
 
 @{
     await Html.RenderPartialAsync("/Views/Partials/_Header.cshtml");
