@@ -1,4 +1,4 @@
-﻿@using Smidge.TagHelpers
+@using Smidge.TagHelpers
 @inherits ElektroWasserer.Web.EwUmbracoViewPage
 
 <!doctype html>
@@ -16,12 +16,13 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png"/>
     <link rel="manifest" href="/favicon/site.webmanifest"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link href="/content/css/output.css" rel="stylesheet">
 </head>
 <body class="bg-[#18181b] bg-gray-100 text-black">
 <script src="/content/lazysizes/lazysizes.min.js" async=""></script>
 <script type="module" src="/content/js/cookieconsent-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 @{
     await Html.RenderPartialAsync("/Views/Partials/_Header.cshtml");

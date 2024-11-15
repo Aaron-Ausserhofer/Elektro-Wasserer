@@ -1,4 +1,4 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
 @{
     var textBlock = (TextBlock)Model.Content;
 }
@@ -11,3 +11,57 @@
         </div>
     </section>
 </div>
+
+        @if(textBlock.Images?.Count() > 0){
+            <div class="swiper max-w-full">
+                <div class="swiper-wrapper">
+                    @foreach (var img in textBlock.Images!)
+                    {
+                        <img class="swiper-slide cursor-pointer rounded object-cover object-center" alt="hero" src="@img.GetCropUrl()" data-fancybox="gallery">
+                    }
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        }
+
+
+<style>
+    :root {
+        --swiper-theme-color: #fff;
+        --swiper-navigation-size: 24px;
+    }
+    .swiper {
+        width: 600px;
+        height: 300px;
+    }
+
+    .mediasrip-swiper-section .swiper-pagination-bullet {
+        margin: 0 4px;
+        width: 12px;
+        height: 12px;
+        z-index: 50;
+    }
+
+    .mediasrip-swiper-section .swiper-pagination-bullet-active {
+        opacity: 1;
+        background: #333333;
+    }
+</style>
+
+<script>
+    const swiper = new Swiper('.swiper', {
+        direction: 'horizontal',
+        loop: true,
+        
+        pagination: {
+            el: '.swiper-pagination'
+        },
+
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        }
+    });
+
+</script>
