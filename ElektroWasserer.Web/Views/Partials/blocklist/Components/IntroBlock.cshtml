@@ -1,0 +1,17 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@{
+    var introBlock = (IntroBlock)Model.Content;
+}
+
+<section>
+    <div class="container">
+        <div class="flex flex-col">
+            <div class="intro-content content-div col-12">
+                <h1 class="h1 text-black">@introBlock.Title</h1>
+                <div class="text-xl font-extralight md:text-2xl">
+                    @Html.Raw(introBlock.Intro)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
