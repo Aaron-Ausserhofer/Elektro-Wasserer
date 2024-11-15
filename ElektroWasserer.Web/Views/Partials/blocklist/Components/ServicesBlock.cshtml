@@ -29,7 +29,7 @@
     <div class="grid-cols-1 grid gap-12 md:grid-cols-3">
         @foreach (var service in servicesPage?.Descendants<ServicePage>()!)
         {
-            <a href="@service.Url()" class="bg-darkgray-950 relative mx-auto w-full max-w-md overflow-hidden border border-[#ffffff1a] text-white shadow-lg">
+            <a href="@service.Url()" class="bg-darkgray-950 relative mx-auto w-full max-w-md overflow-hidden text-white shadow-lg">
                 <!-- Header Section -->
                 <div class="z-20 absolute left-5 top-0 size-20 bg-yellow-400">
                     <img class="m-auto h-full w-14" src="@service.ServiceIcon?.Url()" />
