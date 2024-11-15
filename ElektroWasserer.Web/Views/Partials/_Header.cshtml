@@ -9,12 +9,15 @@
     }
     @if (!Model.NoHeader)
     {
-        <div class="flex-1 relative flex h-[700px] flex-col items-start justify-center bg-cover bg-center bg-no-repeat px-6" style="background-image:url('@headerImage')">
+        <div class="flex-1 relative flex flex-col items-start justify-center bg-cover bg-center bg-no-repeat @(Model is Homepage ? "h-[600px]" : "h-52 md:h-[600px]") px-6" style="background-image:url('@headerImage')">
             <div class="absolute inset-0 bg-black opacity-50"></div>
             <div class="z-10 container">
-                <figure class="animate-bounce-slow flex justify-end">
-                    <img class="size-24" src="@homePage?.Url(mode: UrlMode.Absolute)/media/blitz.png">
-                </figure>
+                @if (Model is Homepage)
+                {
+                    <figure class="animate-bounce-slow flex justify-end">
+                        <img class="size-24" src="@homePage?.Url(mode: UrlMode.Absolute)/media/blitz.png">
+                    </figure>
+                }
                 <div class="after:w-20 after:block after:my-4 after:border-b-4 after:border-yellow-400">
                     <h2 class="mb-6 flex w-full flex-col text-left text-6xl font-bold lg:text-6xl">
                         @if (Model is Homepage)
@@ -24,7 +27,7 @@
                         }
                         else
                         {
-                            <span class="break-words text-white">@Model.Name</span>
+                            <span class="break-words text-white max-md:text-2xl">@Model.Name</span>
                         }
                     </h2>
                 </div>
@@ -33,7 +36,7 @@
                 </div>
                 @if (Model is Homepage)
                 {
-                    <a href="mailto:info@elektrowasser.com" class="mt-8 bg-yellow-400 px-12 py-3 font-semibold text-black">
+                    <a href="mailto:was.ohg@rolmail.net" class="btn-primary mt-8">
                         KONTAKT
                     </a>
                 }
