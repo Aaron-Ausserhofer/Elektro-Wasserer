@@ -1,0 +1,43 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@{
+    var mediaStripBlock = (MediaStripBlock)Model.Content;
+}
+
+<section>
+    <div class="container">
+        <div class="swiper max-w-full">
+            <div class="swiper-wrapper">
+                @foreach (var img in mediaStripBlock.Images!)
+                {
+                    <img class="swiper-slide aspect-video cursor-pointer object-cover object-center" alt="hero" src="@img.GetCropUrl()" data-fancybox="gallery">
+                }
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+</section>
+
+<style>
+    :root {
+        --swiper-theme-color: #fff;
+        --swiper-navigation-size: 24px;
+    }
+</style>
+
+<script>
+    const swiper = new Swiper('.swiper',
+        {
+            direction: 'horizontal',
+            loop: true,
+
+            pagination: {
+                el: '.swiper-pagination'
+            },
+
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            }
+        });
+</script>
