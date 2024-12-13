@@ -58,7 +58,7 @@
         }
 
         const targetElement = document.getElementById('howItWstep');
-        if (targetElement) {
+        if (targetElement && window.innerWidth < 768) {
             const offset = -100;
             const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY + offset;
 
