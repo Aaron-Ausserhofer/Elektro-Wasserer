@@ -1,16 +1,21 @@
+﻿@using System.ComponentModel
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
 @{
     var textBlock = (TextBlock)Model.Content;
 }
 
-<div class="container">
-    <section class="py-12">
-        <h2>@textBlock.Title</h2>
-        <div class="text-black">
+<section>
+    <div class="container mx-auto flex flex-col items-center md:flex-row @(textBlock.ImagePosition == "Links" ? "!flex-row-reverse" : "")">
+        <div class="mb-16 flex flex-col items-center md:w-1/2 md:pr-16 md:items-start md:text-left md:mb-0 lg:flex-grow lg:pr-24">
+            <h1 class="title-font mb-4 text-3xl font-medium text-gray-900 sm:text-4xl">@textBlock.Title
+            </h1>
             @Html.Raw(textBlock.Text)
+            @if(textBlock.ButtonLink != null){
+                <div class="mt-4 flex justify-center">
+                    <a href="@textBlock.ButtonLink.Url" class="btn-primary">@(textBlock.ButtonText ?? textBlock.ButtonLink.Name)</a>
+                </div>
+            }
         </div>
-    </section>
-</div>
 
         @if(textBlock.Images?.Count() > 0){
             <div class="swiper max-w-full">
@@ -24,6 +29,8 @@
                 <div class="swiper-button-next"></div>
             </div>
         }
+    </div>
+</section>
 
 
 <style>
@@ -34,18 +41,6 @@
     .swiper {
         width: 600px;
         height: 300px;
-    }
-
-    .mediasrip-swiper-section .swiper-pagination-bullet {
-        margin: 0 4px;
-        width: 12px;
-        height: 12px;
-        z-index: 50;
-    }
-
-    .mediasrip-swiper-section .swiper-pagination-bullet-active {
-        opacity: 1;
-        background: #333333;
     }
 </style>
 
@@ -64,4 +59,6 @@
         }
     });
 
+    Fancybox.bind("[data-fancybox]", {
+    });
 </script>

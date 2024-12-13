@@ -1272,6 +1272,11 @@ section{
   border-color: rgb(250 204 21 / var(--tw-border-opacity, 1));
 }
 
+.border-white{
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
+}
+
 .bg-\[\#000000b3\]{
   background-color: #000000b3;
 }
@@ -1313,6 +1318,16 @@ section{
 .bg-zinc-700{
   --tw-bg-opacity: 1;
   background-color: rgb(63 63 70 / var(--tw-bg-opacity, 1));
+}
+
+.bg-gray-950{
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 7 18 / var(--tw-bg-opacity, 1));
+}
+
+.bg-gray-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(75 85 99 / var(--tw-bg-opacity, 1));
 }
 
 .bg-gradient-to-t{
@@ -1412,6 +1427,11 @@ section{
 .py-8{
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.py-12{
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .\!pb-56{
@@ -1833,6 +1853,10 @@ body {
     order: -9999;
   }
 
+  .md\:m-auto{
+    margin: auto;
+  }
+
   .md\:mb-0{
     margin-bottom: 0px;
   }
@@ -1922,6 +1946,11 @@ body {
     justify-content: center;
   }
 
+  .md\:bg-gray-100{
+    --tw-bg-opacity: 1;
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
+  }
+
   .md\:px-10{
     padding-left: 2.5rem;
     padding-right: 2.5rem;
@@ -1975,6 +2004,11 @@ body {
   .md\:text-6xl{
     font-size: 3.75rem;
     line-height: 1;
+  }
+
+  .md\:text-black{
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity, 1));
   }
 }
 
