@@ -6,28 +6,28 @@
 <section id="works" class="bg-darkgray-950 relative py-10 sm:py-16 lg:py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
-            <h2 class="mx-auto text-4xl font-extrabold text-white md:text-6xl lg:text-5xl">Wie gehen Wir vor?</h2>
-            <p class="mt-6 text-center text-white">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <h2 class="mx-auto text-4xl font-extrabold text-white md:text-6xl lg:text-5xl">@servicesBlock.Title</h2>
+            <div class="mt-6 text-center text-white">@Html.Raw(servicesBlock.Text)</div>
         </div>
         <div class="mt-12 grid md:grid-cols-[25%_75%]">
             <div id="howItWsteps">
                 <div id="howItWstep-1" class="howItWstep active border-l-4 cursor-pointer border-[#f9fafb3d] py-4 pl-4">
                     <p class="text-2xl font-semibold">01</p>
-                    <h2 class="text-xl font-semibold text-white">Persönliche Beratung</h2>
+                    <h2 class="text-xl font-semibold text-white">@Umbraco.GetDictionaryValue("service-Persönliche Beratung")</h2>
                 </div>
 
                 <div id="howItWstep-2" class="howItWstep border-l-4 cursor-pointer border-[#f9fafb3d] py-4 pl-4">
                     <p class="text-2xl font-semibold">02</p>
-                    <h2 class="text-xl font-semibold text-white">Planung und Kosten</h2>
+                    <h2 class="text-xl font-semibold text-white">@Umbraco.GetDictionaryValue("service-Planung und Kosten")</h2>
                 </div>
 
                 <div id="howItWstep-3" class="howItWstep border-l-4 cursor-pointer border-[#f9fafb3d] py-4 pl-4">
                     <p class="text-2xl font-semibold">03</p>
-                    <h2 class="text-xl font-semibold text-white">Start des Projektes</h2>
+                    <h2 class="text-xl font-semibold text-white">@Umbraco.GetDictionaryValue("service-Start des Projektes")</h2>
                 </div>
                 <div id="howItWstep-4" class="howItWstep border-l-4 cursor-pointer border-[#f9fafb3d] py-4 pl-4">
                     <p class="text-2xl font-semibold">04</p>
-                    <h2 class="text-xl font-semibold text-white">Kontrolle</h2>
+                    <h2 class="text-xl font-semibold text-white">@Umbraco.GetDictionaryValue("service-Kontrolle")</h2>
                 </div>
             </div>
             <div class="my-auto mt-8 md:pl-20 md:mt-0" id="howItWstep">

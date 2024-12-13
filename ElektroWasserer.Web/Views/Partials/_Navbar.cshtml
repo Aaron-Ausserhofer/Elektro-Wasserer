@@ -24,7 +24,21 @@
                     <div class="fixed bottom-0 right-0 top-0 z-50 h-full w-64 max-w-full translate-x-full transform overflow-y-auto bg-gray-100 shadow-lg transition-all duration-500 peer-checked:translate-x-0">
                         <div class="h-full p-6">
                             <div class="mb-8 flex items-center justify-between">
-                                <img class="h-12" src="@(homePage?.Url(mode: UrlMode.Absolute))media/Elektro-Wasserer-Logo_Big.png" alt="Elektro-Wasserer-Logo_Big">
+                                <div class="language flex gap-4">
+                                    @{
+                                        if (PageState.Language!.CultureInfo?.Name == "de")
+                                        {
+                                            <a href="https://elektrowasserer.com" class="font-bold text-yellow-400">DE</a>
+                                            <a href="https://elektrowasserer.com/it" class="font-bold">IT</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="https://elektrowasserer.com/it" class="font-bold text-yellow-400">IT</a>
+                                            <a href="https://elektrowasserer.com" class="font-bold">DE</a>
+                                        }
+                                    }
+                                </div>
+
                                 <input type="checkbox" id="hamburger" class="peer sr-only relative">
                                 <label for="hamburger" class="relative left-0 top-0 z-30 inline-block cursor-pointer rounded-lg transition-all duration-500">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -35,14 +49,14 @@
                             <div class="mt-6 flex h-full flex-col justify-between">
                                 <ul class="space-y-2">
                                     <li class="border-b border-gray-400">
-                                        <a href="/" class="flex w-full items-center justify-between p-2">
+                                        <a href="/" class="flex w-full items-center justify-between p-2 font-bold uppercase">
                                             Home
                                         </a>
                                     </li>
                                     <input type="checkbox" id="dropdownToggle" class="peer sr-only">
                                     <div class="flex">
-                                        <label for="dropdownToggle" class="inline-block w-full cursor-pointer p-2">
-                                            Leistungen
+                                        <label for="dropdownToggle" class="inline-block w-full cursor-pointer p-2 font-bold uppercase">
+                                            @Umbraco.GetDictionaryValue("Leistungen")
                                         </label>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="m-auto h-6 w-6 transition-transform duration-300 ease-in-out peer-checked:bg-red-200 peer-checked:rotate-180">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
@@ -53,14 +67,14 @@
                                         @foreach (var service in servicesPage?.Descendants<ServicePage>()!)
                                         {
                                             <li class="ml-0.5">
-                                                <a href="@service.Url()" class="block py-2 pl-1 hover:bg-gray-100">
-                                                    - @service.Name
+                                                <a href="@service.Url()" class="ml-2 block py-2 pl-1 hover:bg-gray-100">
+                                                    @service.Name
                                                 </a>
                                             </li>
                                         }
                                         <li class="ml-0.5">
                                             <a href="@servicesPage.Url()" class="block px-4 py-2 font-semibold hover:bg-gray-100">
-                                                Alle Leistungen
+                                                @Umbraco.GetDictionaryValue("Alle Leistungen")
                                             </a>
                                         </li>
                                     </ul>
@@ -83,14 +97,14 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/>
                                             </svg>
                                             <div class="flex flex-col">
-                                                <span class="text-xs font-semibold">Telefon</span>
+                                                <span class="text-xs font-semibold">@Umbraco.GetDictionaryValue("Telefon")</span>
                                                 <a class="text-sm sm:text-base" href="tel:+393483528931">+39 348 352 8931</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="!mt-4">
-                                        <span>Mo - Sa | 7:30 - 17:30</span><br/>
-                                        <span>Sonntag - geschlossen</span>
+                                        <span>@Umbraco.GetDictionaryValue("Öffnungszeiten")</span><br/>
+                                        <span>@Umbraco.GetDictionaryValue("Sonntag - geschlossen")</span>
                                     </div>
                                 </div>
                             </div>
